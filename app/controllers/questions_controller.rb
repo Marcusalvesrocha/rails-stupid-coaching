@@ -5,13 +5,10 @@ class QuestionsController < ApplicationController
   def answer
     @question = params[:question]
     @last_string = @question.last
-    case
-    when @question == "I am going to work"
-      @coaching = "Great!"
-    when @question.last == "?"
-      @coaching = "Silly question, get dressed and go to work!"
-    else
-      @coaching = "I don't care, get dressed and go to work!"
-    end
+
+    @coaching = "I don't care, get dressed and go to work!"
+    @coaching = "Great!" if @question == "I am going to work"
+    @coaching = "Silly question, get dressed and go to work!" if @question.last == "?"
+
   end
 end
